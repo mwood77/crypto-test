@@ -1,68 +1,71 @@
 # Some kind of blockchain madness (ethereum)
 
 ## Reqs
+### Install dependencies
 ```
 npm i
 ```
-#### Things used
+### Things used
 1. Truffle (framework)
-1. gnache (gnache cli) - a local eth blockchain used for dev/testing
-1. @openzeppelin/contracts - scaffolding / reusable 'contracts'
-1. chai - unit testing
+1. Gnache CLI - a local eth blockchain used for dev/testing
+1. `@openzeppelin/contracts` - scaffolding / reusable 'contracts'
+1. Chai - unit testing
 1. an account at [Alchemy](https://alchemy.com/?r=8a998da78c2ea302) _(referal link)_
 
 ## Running it
-1. write some contracts and put them in `~/contracts/...`
-1. compile the contracts
+1. Write some solidity contracts and put them in `~/contracts/...`
+1. Compile the contracts
     ```
     npx truffle compile
     ```
-1. start up the blockchain
+1. Start up your local blockchain instance
     ```
     npx ganache-cli --deterministic (static ip address)
     ```
-1. configure truffle to interact with your blockchain (`truffle-config.js` and `~/migrations/2_deploy.js`)
-1. deploy the compiled contracts
+1. Configure truffle to interact with your blockchain (
+    - look in `truffle-config.js` and `~/migrations/2_deploy.js`
+1. Deploy the compiled contracts
     ```
     npx truffle migrate --network development
     ```
 
-## Interact with your deployed contracts (Locally)
-> Do everything, or some of it, in [Running it](#runnint-it)
-
+## Interact with your locally deployed contracts
 > Follow the steps here: https://docs.openzeppelin.com/learn/deploying-and-interacting#interacting-from-the-console
 
-1. `npx truffle console --network development`
-1. now type in js-like code into your console (terrible)
+> Do everything, or some of the steps in [Running it](#runnint-it)
 
-### Alternative (best way)
-1. add a script to `~/scripts/newfilehere.js`
-1. run this script, while you blockchain is alive: `npx truffle exec --network development ./scripts/your_js_file`
+### Use the CLI
+1. `npx truffle console --network development`
+1. Now type js-like code into your console _(terrible)_
+
+### Alternative Method (best way)
+1. Add a script to `~/scripts/newfilehere.js`
+1. Run this script, while your blockchain is alive: `npx truffle exec --network development ./scripts/your_js_file`
     ```
     npx truffle exec --network development ./scripts/index.js
     ```
 
-## Interact with your deployed contracts (Live - Ropsten)
+## Interact with your testnet deployed contracts (Live - goerli network)
 > [A great tutorial](https://docs.openzeppelin.com/learn/connecting-to-public-test-networks#accessing-a-testnet-node)
 
 
-1. connect to goerli test net
+1. Connect to goerli testnet
     ```
     npx truffle console --network goerli
     ```
-1. list your goerli accounts;
+1. List your goerli accounts;
     ```
     truffle(goerli)> accounts
     ```
-1. check the balance of an account(s)
+1. Check the balance of an account(s)
     ```
     await web3.eth.getBalance(accounts[n])
     ```
 1. Get `wei`: https://goerlifaucet.com/ (alchemy account needed)
 
-1. Check the balance again, to make sure you recieved some ETH.
+1. Check the balance again to make sure you recieved some ETH
 
-1. Deploy your contract to Goerli
+1. Deploy your contract to goerli
     ```
     npx truffle migrate --network goerli
     ```
