@@ -1,4 +1,4 @@
-# Some kind of blockchain madness (etherium)
+# Some kind of blockchain madness (ethereum)
 
 ## Reqs
 ```
